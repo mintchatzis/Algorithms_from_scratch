@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+'''Self-explanatory, the famous divide and conquer merge sort algorithm.
+   Tested using Python's "sorted" function.'''
 def merge_sort(arr,f = lambda a,b: a <= b):
     #First define the merge operation
     def merge(left, right):

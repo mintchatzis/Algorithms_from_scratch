@@ -1,3 +1,5 @@
+'''Alogirthm counting the number of inversions in a list given as input'''
+
 from random import randint
 
 def merge_count(left, right):

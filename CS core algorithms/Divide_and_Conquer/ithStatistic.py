@@ -1,5 +1,10 @@
 #!/usr/bin/python
 
+'''Find ith biggest number in the list given. For example, if given ith = len(list)/2
+   it is going to find the median. Naive approach would first sort and then find
+   the ith statistic. This approach finds the statistic faster while sorting by not
+   traversing through the branch where the ith statistic cannot logically be.'''
+
 def findIthStatistic(arr,ith):
         l = len(arr)
         if (l == 0):

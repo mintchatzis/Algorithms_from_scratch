@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-''' Closest Pair '''
+''' Closest Pair in 2D plane (Divide and Conquer way) (Tested with brute force way)'''
 
 from merge_sort import merge_sort as sort
 from math import sqrt

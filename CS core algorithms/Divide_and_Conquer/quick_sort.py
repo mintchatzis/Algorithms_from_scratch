@@ -1,3 +1,6 @@
+'''Self-explanatory, the famous divide and conquer quick sort algorithm.
+   Tested using Python's "sorted" function.'''
+
 from random import randint
 
 def sort(arr):
