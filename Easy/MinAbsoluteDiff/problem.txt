@@ -1,9 +1,0 @@
-Function Description
-____________________
-
-The function should return an integer that represents the minimum absolute
-difference difference (absolute value function) between ANY pair of elements.
-
-minimumAbsoluteDifference has the following parameter(s):
-
-arr: an array of integers
