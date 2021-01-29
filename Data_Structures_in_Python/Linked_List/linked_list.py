@@ -81,7 +81,7 @@ class LinkedList():
             s = "[" + s
         return s.replace(',' , '' , 1)
     
-    def to_linked_list(self,iterable):
+    def from_iterable(self,iterable):
         '''Converts the given Iterable to a linked list'''
         iterable = iterable.__iter__()
         try:
@@ -98,9 +98,3 @@ if __name__ == "__main__":
     if run_tests():
         print("All tests passed.")
     
-    
-    
-    
-
-            
-        
