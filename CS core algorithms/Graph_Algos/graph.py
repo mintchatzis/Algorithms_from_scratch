@@ -1,19 +1,21 @@
-graph = {
-    "a" : ["c"],
-    "b" : ["c", "e"],
-    "c" : ["a", "b", "d", "e"],
-    "d" : ["c"],
-    "e" : ["c", "b"],
-    "f" : [] }
-
-def gen_edges(graph):
+def get_edges(g):
     edges = []
     
-    for vertice in graph:
-        for pair in graph[vertice]:
-            edges.append((vertice,pair))
+    for key in g.keys():
+        for v in g[key]:
+            rev = (v,key)
+            if rev not in edges:
+                edges.append((key,v))
     return edges
 
+graph = {
+    "a":["b","c"],
+    "b":["a","d","e"],
+    "c":["a","f"],
+    "d":["b","g"],
+    "e":["b","g"],
+    "f":["c","g"],
+    "g":[]}
 
-edge_list = gen_edges(graph)
-    
+edges = get_edges(graph)
+print(edges)
