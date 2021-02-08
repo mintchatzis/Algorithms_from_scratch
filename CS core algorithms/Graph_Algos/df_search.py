@@ -1,28 +1,32 @@
-def df_search(graph,root=None,item):
-    '''Function implementing depth-first-search on input dictionary representing graph'''
-    
-    if root == None:
-        root = graph.keys[0]
-    
-    
-    tmpG = {}
-    for vertex in graph:
-        tmpG[vertex] = 0
-    
-    def inner(g,s):
-        tmpG[s] = 1
-        
-        for pair in g[s]:
-            if tmpG[pair] != 1:
-                
+from graph import Graph
 
+def df_search(graph,item, root = None):
+    '''Function implementing depth-first-search on given graph object'''
     
-graph = {"a":["b","c"],"b":["a","d","e"],"c":["a","f"],"d":["b","g"],"e":["b","g"],"f":["c","g"],"g":[]}
-graph_values = {"a":1 , "b":2, "c":3, "d":4, "e":5, "f":6, "g":7}
+    graph.init_visited()
     
-    
+    for node in graph.graph.keys():
         
-print(df_search(graph,'a',7))
+    
+    
+
+
+if __name__ == "__main__":
+    
+    init_connections = [ ('a', 'c'), ('a', 'b'),
+                         ('b', 'd'),('b', 'e'),
+                         ('c', 'f'),
+                         ('d', 'g'),
+                         ('e', 'g'),
+                         ('f', 'g') ]
+    
+    extra_connections = [('g','h'),
+                         ('h','f')]
+    
+    g_undir = Graph(init_connections)
+    g_dir = Graph(init_connections,directed=True)
+    
+    
 
 
             

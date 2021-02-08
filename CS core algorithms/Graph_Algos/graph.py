@@ -10,7 +10,7 @@ class Graph():
             for pair in connections:
                 self.add(pair)
         
-        self.visited = self.__init_visited()  #keeps track of 'visited' status of each node
+        self.visited = self.init_visited()  #keeps track of 'visited' status of each node
     
     def add(self,pair):
         '''
@@ -30,7 +30,7 @@ class Graph():
             self.graph[node2].add(node1)
         return
         
-    def __init_visited(self):
+    def init_visited(self):
         '''
            Returns a dictionary which stores the 'visited status' of every node
            Comp: O(n)
