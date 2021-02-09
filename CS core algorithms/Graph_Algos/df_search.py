@@ -5,8 +5,21 @@ def df_search(graph,item, root = None):
     
     graph.init_visited()
     
-    for node in graph.graph.keys():
+    def inner_rec(vertex):
+        if graph.data[vertex] == item:
+            return vertex
         
+        neighbors = graph[vertex]
+        for neighbor in neighbors:
+            if not graph.visited[vertex]:
+                inner_rec(neighbor)
+    
+    for node in graph.graph.keys():
+        result = inner_rec(node)
+
+        if result is not None:
+            return result
+    return None
     
     
 
@@ -33,6 +46,3 @@ if __name__ == "__main__":
                 
             
     
-    
-    
-
