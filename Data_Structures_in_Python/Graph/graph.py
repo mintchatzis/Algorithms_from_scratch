@@ -1,17 +1,26 @@
 class Graph():
     def __init__(self, connections = None, directed = False):
-        '''Graph representation using dictionary of sets'''
+        '''Graph representation using dictionary of sets
+           connections: list of tuples, eg. ('a','b'), meaning nodes a and b are linked
+           directed: if True, graph is directed
+        '''
         
-        self.graph = {} 
-        self.data = {}
-        self.directed = directed
+        #initialize instance variables
+        self.__graph = {}
+        self.__directed = directed
+        self.__visited = self.init_visited()  #keeps track of 'visited' status of each node
+        self.__data = self.__init_data()
         
+        #construct graph from given connections
         if connections is not None:
             for pair in connections:
                 self.add(pair)
+                
+    def __init_vertex(self,vertex):
+        self.__graph[vertex] = set()
+        self.__data[vertex] = None
+        self.__visited[vertex] = False
         
-        self.visited = self.__init_visited()  #keeps track of 'visited' status of each node
-    
     def add(self,pair):
         '''
            Adds connection to graph.
@@ -19,27 +28,68 @@ class Graph():
         '''
         node1,node2 = pair
         
-        if node1 not in self.graph:
-            self.graph[node1] = set()
-        self.graph[node1].add(node2)
-        
+        #Create nodes, if they don't already exist
+        if node1 not in self.__graph:
+            self.__init_vertex(node1)
+        if node2 not in self.__graph:
+            self.__init_vertex(node2)
+          
+        #Add one-way connection between nodes
+        self.__graph[node1].add(node2)
+            
         #for undirected graph, add reverse connection too
-        if (not self.directed):
-            if node2 not in self.graph:
-                self.graph[node2] = set()
-            self.graph[node2].add(node1)
+        if (not self.__directed):
+            self.__graph[node2].add(node1)
         return
         
-    def __init_visited(self):
+    def init_visited(self):
         '''
            Returns a dictionary which stores the 'visited status' of every node
            Comp: O(n)
         '''
         temp = {}
-        for key in self.graph.keys():
+        for key in self.__graph.keys():
             temp[key] = False
-        return temp        
-
+        return temp
+    def __init_data(self):
+        '''
+            Returns a dictionary representing the data stored in each graph node
+            all initialized to None
+            Comp: O(n)
+        '''
+        temp = {}
+        for key in self.__graph.keys():
+            temp[key] = None
+        return temp
+    
+    def get_neighbors(self,vertex):
+        return self.__graph[vertex]
+    
+    def get_all_data(self):
+        return self.__data
+    
+    def get_data(self,vertex):
+        return self.__data[vertex]
+    
+    def get_vertices(self):
+        return self.__graph.keys()
+    
+    def get_graph_rep(self):
+        return self.__graph
+    
+    def get_visited(self,vertex):
+        return self.__visited[vertex]
+    
+    def get_size(self):
+        return len(self.__graph)
+    
+    def set_visited(self,vertex,visited):
+        self.__visited[vertex] = visited
+        return
+    
+    def set_data(self,vertex,value):
+        self.__data[vertex] = value
+        return
 
 if __name__ == "__main__":
     
@@ -55,8 +105,8 @@ if __name__ == "__main__":
     
     g_undir = Graph(init_connections)
     g_dir = Graph(init_connections,directed=True)
-    print(f"Your undirected graph, sir: \n {g_undir.graph}")
-    print(f"Your directed graph, sir: \n {g_dir.graph}")
+    print(f"Your undirected graph, sir: \n {g_undir.get_graph_rep()}")
+    print(f"Your directed graph, sir: \n {g_dir.get_graph_rep()}")
     
     
     tests = []
