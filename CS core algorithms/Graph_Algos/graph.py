@@ -78,6 +78,9 @@ class Graph():
         return self.__graph
     
     def get_visited(self,vertex):
+        '''
+            Returns true if given vertex has been visited
+        '''
         return self.__visited[vertex]
     
     def get_size(self):
@@ -90,6 +93,9 @@ class Graph():
     def set_data(self,vertex,value):
         self.__data[vertex] = value
         return
+    
+    def is_empty(self):
+        return self.__graph == {}
 
 if __name__ == "__main__":
     
