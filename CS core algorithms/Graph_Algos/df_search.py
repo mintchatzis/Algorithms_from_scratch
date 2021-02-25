@@ -24,8 +24,6 @@ def df_search(graph,root,item):
             return vertex
         graph.set_visited(vertex,True)
         print(f"Visiting vertex: {vertex}")
-        if vertex == 'g':
-            pass
         
         neighbors = graph.get_neighbors(vertex)
         for neighbor_ver in neighbors:
