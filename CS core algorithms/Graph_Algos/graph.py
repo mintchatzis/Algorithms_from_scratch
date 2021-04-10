@@ -1,11 +1,10 @@
 class Graph():
+    '''Graph representation using dictionary of sets
+        connections: list of tuples, eg. ('a','b'), meaning nodes a and b are linked
+        directed: if True, graph is directed
+    '''
+
     def __init__(self, connections = None, directed = False):
-        '''Graph representation using dictionary of sets
-           connections: list of tuples, eg. ('a','b'), meaning nodes a and b are linked
-           directed: if True, graph is directed
-        '''
-        
-        #initialize instance variables
         self.__graph = {}
         self.__directed = directed
         self.__visited = self.init_visited()  #keeps track of 'visited' status of each node
@@ -51,6 +50,7 @@ class Graph():
         for key in self.__graph.keys():
             temp[key] = False
         return temp
+
     def __init_data(self):
         '''
             Returns a dictionary representing the data stored in each graph node
